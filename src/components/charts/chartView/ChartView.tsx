@@ -10,7 +10,7 @@ type ChartProps = {
 }
 
 const ChartView = ({chartData1, chartData2, chartData3, chartData4} : ChartProps) => {
-  
+
   return (
     <div className="background">
       <ChartTemplate data={chartData1} />

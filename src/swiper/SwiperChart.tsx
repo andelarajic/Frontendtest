@@ -19,7 +19,8 @@ const swiperOptions2 = {
 };
 
 const SwiperChart = () => {
-
+     
+    
   const [chartType, setChartType] = useState("area");
   const chartTypeRef = useRef(chartType);
   const [chartData, setChartData] = useState<ChartData>()
@@ -75,7 +76,7 @@ const SwiperChart = () => {
         </SwiperSlide>
         <SwiperSlide>
           <ChartView
-            chartData1={chartData!!} chartData2={chartData!!}
+            chartData1={chartData!!}  chartData2={chartData!!}
             chartData3={chartData!!} chartData4={chartData!!}
           />
         </SwiperSlide>
