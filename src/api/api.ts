@@ -19,3 +19,9 @@ export async function getChartDataByType(type: string) {
     "http://localhost:8081/chart/" + type
   )
 }
+
+export async function getSmile() {
+  return await http<number>(
+    "http://localhost:8081/smile"
+  )
+}
