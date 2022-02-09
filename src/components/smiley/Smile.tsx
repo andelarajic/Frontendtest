@@ -1,4 +1,5 @@
 import React from "react"
+import "../smiley/Smile.css"
 import very_angry from "../../images/very_angry.png";
 import angry from "../../images/angry.jpg";
 import neutral from "../../images/neutral.png";
@@ -30,8 +31,8 @@ export const Smile = ({value} : SmileProps) => {
     }
     
     return (
-        <div>
-            <img src={getSmile(value)} alt="" height={400} width={400} />
+        <div className="smile">
+            <img src={getSmile(value)} alt="" height={50} width={50} />
         </div>
     )
 }

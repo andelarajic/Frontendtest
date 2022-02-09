@@ -7,12 +7,5 @@
 .flex {
     flex: 40%;
     background-color: black;
-}
-
-.highcharts-background {
-    fill: #000000;
-}
-
-.highcharts-plot-background {
-    fill: 	#181818;
+    background-size: cover;
 }
