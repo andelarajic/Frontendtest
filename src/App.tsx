@@ -4,7 +4,7 @@ import SwiperChart from './swiper/SwiperChart';
 function App() {
 
   return (
-    <div className="flex">
+    <div>
       <SwiperChart/>
     </div>
   );

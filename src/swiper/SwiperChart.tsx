@@ -25,68 +25,74 @@ const SwiperChart = () => {
   const [chartData, setChartData] = useState<ChartData>()
   const [chartDataByType, setChartDataByType] = useState<ChartData>()
   const [smileValue, setSmileValue] = useState<number>()
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const run = async () => {
-      chartTypeRef.current = chartType;
-      const [response1, response2] = await Promise.all([getChartData(), getChartDataByType(chartType)]);
-      if (chartTypeRef.current === chartType) {
-        setChartData(response1);
-        setChartDataByType(response2);
-      }
-    };
-    run();
-  }, [chartType])
-
-  useEffect(() => {
-    const run = async () => {
-      const response = await getSmile();
-      setSmileValue(response);
+  const fetchApi = async () => {
+    chartTypeRef.current = chartType;
+    const [chartResponse1, chartResponse2, smileResponse] = await Promise.all([getChartData(), getChartDataByType(chartType), getSmile()]);
+    if (chartTypeRef.current === chartType) {
+      setChartData(chartResponse1);
+      setChartDataByType(chartResponse2);
+      setSmileValue(smileResponse);
     }
-    run()
-  }, [])
+  };
 
+  useEffect(() => {
+    setLoading(true)
+    fetchApi().then(
+      () => setLoading(false)
+      )
+  }, [])
+  
   return (
     <div>
-      <Swiper
-        autoplay={swiperOptions}
-        navigation
-        pagination={swiperOptions2}
-        slidesPerView={1}
-        spaceBetween={50}
-      >
-        <SwiperSlide>
-        <Smile value={smileValue!!}/>
-          <ChartView
-            chartData1={chartDataByType!!} chartData2={chartData!!}
-            chartData3={chartData!!} chartData4={chartDataByType!!}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-        <Smile value={smileValue!!}/>
-          <ChartView
-            chartData1={chartData!!} chartData2={chartData!!}
-            chartData3={chartDataByType!!} chartData4={chartData!!}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-        <Smile value={smileValue!!}/>
-          <ChartView
-            chartData1={chartData!!} chartData2={chartDataByType!!}
-            chartData3={chartData!!} chartData4={chartData!!}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-        <Smile value={smileValue!!}/>
-          <ChartView
-            chartData1={chartData!!}  chartData2={chartData!!}
-            chartData3={chartData!!} chartData4={chartData!!}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
+      {
+      loading ?
+      <div>
+        <h1>
+        LOADING
+        </h1>
+      </div>
+      :
+      <div>
+        <Swiper
+          autoplay={swiperOptions}
+          navigation
+          pagination={swiperOptions2}
+          slidesPerView={1}
+          spaceBetween={50}
+        >
+          <SwiperSlide>
           <Smile value={smileValue!!}/>
-        </SwiperSlide>
-      </Swiper>
+            <ChartView
+              chartData1={chartDataByType!!} chartData2={chartData!!}
+              chartData3={chartData!!} chartData4={chartDataByType!!}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+          <Smile value={smileValue!!}/>
+            <ChartView
+              chartData1={chartData!!} chartData2={chartData!!}
+              chartData3={chartDataByType!!} chartData4={chartData!!}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+          <Smile value={smileValue!!}/>
+            <ChartView
+              chartData1={chartData!!} chartData2={chartDataByType!!}
+              chartData3={chartData!!} chartData4={chartData!!}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+          <Smile value={smileValue!!}/>
+            <ChartView
+              chartData1={chartData!!}  chartData2={chartData!!}
+              chartData3={chartData!!} chartData4={chartData!!}
+            />
+          </SwiperSlide>
+        </Swiper>
+      </div>
+      }
     </div>
   );
 }
