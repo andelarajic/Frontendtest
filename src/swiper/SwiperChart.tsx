@@ -61,14 +61,17 @@ const SwiperChart = () => {
           pagination={swiperOptions2}
           slidesPerView={1}
           spaceBetween={50}
-        >
-          <SwiperSlide>
-          <Smile value={smileValue!!}/>
+        >   
+        <div> 
+          <SwiperSlide  >
+           <Smile value={smileValue!!}/>
             <ChartView
               chartData1={chartDataByType!!} chartData2={chartData!!}
               chartData3={chartData!!} chartData4={chartDataByType!!}
             />
           </SwiperSlide>
+          </div>
+          <div>
           <SwiperSlide>
           <Smile value={smileValue!!}/>
             <ChartView
@@ -76,6 +79,7 @@ const SwiperChart = () => {
               chartData3={chartDataByType!!} chartData4={chartData!!}
             />
           </SwiperSlide>
+          </div>
           <SwiperSlide>
           <Smile value={smileValue!!}/>
             <ChartView

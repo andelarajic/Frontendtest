@@ -19,11 +19,18 @@ Highcharts.theme = {
   },
   title: {
       style: {
-          color: '#A8A8A8',
+          color: '#fff',
           font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
       }
-  }
+  },
+  subtitle: {
+      style: {
+          color: '#fff',
+          font: 'bold 12px "Trebuchet MS", Verdana, sans-serif'
+      }
+  },
 };
+
 
 const ChartTemplate = ({data} : ChartProps) => {
 

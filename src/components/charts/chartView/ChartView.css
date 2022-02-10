@@ -1,5 +1,15 @@
 .background {
+    background-color: black;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+.flex {
+    background-color: black;
+    flex:50%;
+    margin: auto;
+}
+
+
+
